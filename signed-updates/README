@@ -1,0 +1,16 @@
+Signed Update Utilities for Blob
+--------------------------------
+
+To create a signed update, first call build-signed-update.sh.  This will
+create a pgp-signed virtual region data file.  Then, package the datafile
+into a region update file using build-region.  This file must end with
+".rgn" for the Windows updater.exe to accept it.  This file can then
+be passed on the command line to the Windows updater.exe to update a unit.
+
+bin2c is a simple program to convert binary data into a C array.  It can
+be used to export a public key into blob.  Export the key to a file using
+GPG, then use bin2c to generate a C array.  Add this to the pgp_public_keys.h
+file.
+
+The Makefile in this directory is for building the build-region program.
+bin2c can be built directly.
